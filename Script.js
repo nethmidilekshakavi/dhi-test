@@ -181,7 +181,10 @@ function openReview(card) {
   var pEl = document.getElementById('rvModalPhoto');
   if (photo) { pEl.src = photo.src; pEl.alt = photo.alt; pEl.style.display = 'block'; }
   else { pEl.style.display = 'none'; }
-  document.getElementById('rvModalAuthor').textContent = card.querySelector('.rv-foot strong').textContent;
+  var authorLink = card.querySelector('.rv-author');
+  var mA = document.getElementById('rvModalAuthor');
+  mA.textContent = card.querySelector('.rv-foot strong').textContent;
+  if (authorLink) { mA.href = authorLink.href; } else { mA.removeAttribute('href'); }
   document.getElementById('rvModalTime').textContent = card.querySelector('.rv-foot span').textContent;
   document.getElementById('rvModalStars').textContent = card.querySelector('.stars').textContent;
   document.getElementById('rvModalText').textContent = card.querySelector('.rv-full').textContent.trim();
@@ -202,3 +205,9 @@ document.querySelectorAll('.rv-card').forEach(function (card) {
 });
 rvModal.addEventListener('click', function (e) { if (e.target.hasAttribute('data-rv-close')) closeReview(); });
 document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !rvModal.hidden) closeReview(); });
+
+/* name link opens the Google review, not the popup */
+document.querySelectorAll('.rv-author').forEach(function (a) {
+  a.addEventListener('click', function (e) { e.stopPropagation(); });
+  a.addEventListener('keydown', function (e) { e.stopPropagation(); });
+});

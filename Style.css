@@ -284,3 +284,10 @@ button { font-family: inherit; cursor: pointer; }
 .rv-modal-head h4 { font-size: 1.05rem; font-weight: 700; margin: 0; }
 .rv-modal-head small { color: #999; }
 .rv-modal-text { font-size: .92rem; font-weight: 300; line-height: 1.75; white-space: pre-line; }
+
+/* review author link */
+.rv-author { color: inherit; }
+.rv-author strong { transition: color .2s; }
+.rv-author:hover strong { color: var(--teal); text-decoration: underline; }
+.rv-modal-head h4 a { color: inherit; }
+.rv-modal-head h4 a:hover { color: var(--teal); text-decoration: underline; }
